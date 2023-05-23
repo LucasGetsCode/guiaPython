@@ -1,6 +1,7 @@
 # 2. Segunda Parte
 # Ejercicio 2. Implementar las siguientes funciones sobre secuencias pasadas por par ́ametro:
 import random
+import numpy as np
 from Guia8Parte1 import *
 lista_ejemplo = [1,2,3,4,5,61,1,1,]
 texto_ejemplo = "Hola Don José, hola Don Pepito."
@@ -205,4 +206,38 @@ def filas_ordenadas(filas: list([list])) -> list([bool]):
             lista_bools.append(False)
     return lista_bools
     
-print(filas_ordenadas([[1,2,3,4], [4,5,6,7], [1], [1,2,3,1]]))
+# print(filas_ordenadas([[1,2,3,4], [4,5,6,7], [1], [1,2,3,1]]))
+
+# 4. Implementar una funci ́on que tome un entero d y un float p y eleve una matriz cuadrada de tama ̃no d (con valores
+# generados al azar) a la potencia p. Es decir, multiplique a la matriz por s ́ı misma p veces. Luedo de implementarla
+# probar con diferentes valores de d. ¿Qu ́e pasa con valores muy grandes?
+# Nota 1: record ́a que en la multiplicaci ́on de una matriz cuadrada de dimensi ́on d por si misma cada posici ́on se calcula
+# como res[i][j] = ∑d−1
+# n=0 m[i][n] ∗m[n][j]
+# Nota 2: para generar una matriz cuadrada de dimensi ́on d con valores aleatorios hay muchas opciones de implemen-
+# taci ́on, analizar las siguientes usando el m ́odulo numpy (ver recuadro):
+# Opci ́on 1:
+# import numpy as np
+# m = np.random.random((d, d))2
+# Opci ́on 2:
+# import numpy as np
+# m = np.random.randint(i,f, (d, d))3
+def potencia_de_matriz(d: int, p: float) -> list([list([int])]):
+    def sumatoria_matriz(matriz: list([list([int])]), fila: int, columna: int, dimension: int):
+        suma: int = 0
+        for n in range(dimension):
+            suma += matriz[fila][n] * matriz[n][columna]
+        return suma
+    
+    matriz: list([list([int])]) = np.random.randint(0,10, (d, d))
+    matriz_potencia: list([list([int])]) = matriz.copy()
+    print(matriz)
+    while p > 0:
+        for i in range(d):
+            for j in range(d):
+                matriz_potencia[i][j] = sumatoria_matriz(matriz, i, j, d)
+        p -= 1
+    return matriz_potencia
+    
+    
+# print(potencia_de_matriz(3,2))
