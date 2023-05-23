@@ -1,5 +1,5 @@
 
-
+from typing import Any
 """1. Primera Parte
 Ejercicio 1. Codificar en Python las siguientes funciones sobre secuencias:
 1. problema pertenece (in s:seq<Z>, in e: Z) : Bool {
@@ -8,7 +8,7 @@ asegura: { res = true ↔ (∃i : Z)(0 ≤ i < |s| → s[i] = e)}
 }
 ¿Si la especificaramos e implementaramos con tipos gen´ericos, se podr´ıa usar esta misma funci´on para buscar un
 caracter dentro de un string?"""
-def pertenece (s: list, n: int) -> bool:
+def pertenece (s: list, n: Any) -> bool:
     for i in s:
         if i == n:
             return True
@@ -40,7 +40,7 @@ requiere: { True }
 asegura: { res = true ↔ (∀i : Z)(0 ≤ i < (|s| − 1) → s[i] < s[i + 1]}
 }
 """
-def ordenados (s:list) -> bool:
+def esta_ordenado (s:list) -> bool:
     if len(s) <= 1: return True
     for i in range(len(s)-1):
         if s[i] >= s[i+1]:

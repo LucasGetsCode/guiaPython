@@ -1,6 +1,7 @@
 # 2. Segunda Parte
 # Ejercicio 2. Implementar las siguientes funciones sobre secuencias pasadas por par ́ametro:
 import random
+from Guia8Parte1 import *
 lista_ejemplo = [1,2,3,4,5,61,1,1,]
 texto_ejemplo = "Hola Don José, hola Don Pepito."
 # 1. Implementar una funci ́on que dada una lista de n ́umeros, en las posiciones pares borra el valor original y coloca un
@@ -165,11 +166,6 @@ def juego_7_y_medio() -> list([int]):
 # Nota: Reutilizar la funci ́on pertenece() implementada previamente para listas
 
 def pertenece_a_cada_uno(listas: list([list]), n: int) -> list([bool]):
-    def pertenece(x: any, s: list) -> bool:
-        for i in s:
-            if x == i:
-                return True
-        return False
 
     lista_bools = []
     for i in listas:
@@ -200,14 +196,6 @@ def es_matriz(matriz: list([list])) -> bool:
 # asegura: { (∀i : Z)(0 ≤ i < |res| → (res[i] = true ↔ ordenados(s[i]) ) ) } }
 # Nota: Reutilizar la funci ́on ordenados() implementada previamente para listas
 def filas_ordenadas(filas: list([list])) -> list([bool]):
-    def esta_ordenado(s: list) -> bool:
-        if len(s) <= 1: return True
-        i = 0
-        while i < len(s) - 1:
-            if s[i] >= s[i+1]:
-                return False
-            i += 1
-        return True
 
     lista_bools = []
     for fila in filas:
